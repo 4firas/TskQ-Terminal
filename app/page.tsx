@@ -165,12 +165,25 @@ function UploadArtworkModal({
   const [description, setDescription] = useState("");
   const [file, setFile] = useState<File | null>(null);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!file) return;
-    const url = URL.createObjectURL(file);
-    onSubmit({ id: Date.now(), title, description, url });
-    onClose();
+    const form = new FormData();
+    form.append('title', title);
+    form.append('description', description);
+    form.append('file', file);
+
+    const res = await fetch('/api/artwork', {
+      method: 'POST',
+      body: form,
+    });
+    if (res.ok) {
+      const art = await res.json();
+      onSubmit(art);
+      onClose();
+    } else {
+      alert('Upload failed');
+    }
   };
 
   return (
@@ -224,8 +237,16 @@ export default function Home() {
   const [hoverEmoji, setHoverEmoji] = useState(false);
   const [scrollArrows, setScrollArrows] = useState({ down: true, up: false });
   const [modal, setModal] = useState<{ src: string; alt: string } | null>(null);
-  const [artworkData, setArtworkData] = useState<Artwork[]>(initialArtworkData);
+  const [artworkData, setArtworkData] = useState<Artwork[]>([]);
   const [showUploadForm, setShowUploadForm] = useState(false);
+
+  // Load artwork from server
+  useEffect(() => {
+    fetch('/api/artwork')
+      .then(res => res.json())
+      .then(setArtworkData)
+      .catch(() => setArtworkData(initialArtworkData));
+  }, []);
 
   // Always show vertical scrollbar to prevent layout shift
   useEffect(() => {
