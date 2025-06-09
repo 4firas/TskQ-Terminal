@@ -7,7 +7,15 @@ import { SocialLinks } from "@/components/social-links";
 import { cn } from "@/lib/utils";
 
 // Artwork metadata
-const artworkData = [
+interface Artwork {
+  id: number
+  title: string
+  filename?: string
+  url?: string
+  description: string
+}
+
+const initialArtworkData: Artwork[] = [
   {
     id: 2,
     title: "Kiyosumi Fan-Art",
@@ -146,6 +154,82 @@ function ZoomableModal({
   );
 }
 
+function UploadArtworkModal({
+  onSubmit,
+  onClose,
+}: {
+  onSubmit: (data: Artwork) => void;
+  onClose: () => void;
+}) {
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+  const [file, setFile] = useState<File | null>(null);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!file) return;
+    const form = new FormData();
+    form.append('title', title);
+    form.append('description', description);
+    form.append('file', file);
+
+    const res = await fetch('/api/artwork', {
+      method: 'POST',
+      body: form,
+    });
+    if (res.ok) {
+      const art = await res.json();
+      onSubmit(art);
+      onClose();
+    } else {
+      alert('Upload failed');
+    }
+  };
+
+  return (
+    <div className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50">
+      <form
+        onSubmit={handleSubmit}
+        className="bg-gray-900 p-4 rounded shadow-md flex flex-col gap-2"
+      >
+        <input
+          className="px-2 py-1 bg-black border border-gray-700 text-white"
+          placeholder="Title"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+        />
+        <input
+          className="px-2 py-1 bg-black border border-gray-700 text-white"
+          placeholder="Description"
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+        />
+        <input
+          type="file"
+          accept="image/*"
+          onChange={(e) => setFile(e.target.files?.[0] || null)}
+          className="text-white"
+        />
+        <div className="flex gap-2 justify-end mt-2">
+          <button
+            type="button"
+            onClick={onClose}
+            className="px-3 py-1 border border-gray-700 text-white rounded"
+          >
+            Cancel
+          </button>
+          <button
+            type="submit"
+            className="bg-green-500 text-black px-3 py-1 rounded hover:bg-green-400"
+          >
+            Upload
+          </button>
+        </div>
+      </form>
+    </div>
+  );
+}
+
 // Main page
 export default function Home() {
   const [showArtwork, setShowArtwork] = useState(true);
@@ -153,6 +237,16 @@ export default function Home() {
   const [hoverEmoji, setHoverEmoji] = useState(false);
   const [scrollArrows, setScrollArrows] = useState({ down: true, up: false });
   const [modal, setModal] = useState<{ src: string; alt: string } | null>(null);
+  const [artworkData, setArtworkData] = useState<Artwork[]>([]);
+  const [showUploadForm, setShowUploadForm] = useState(false);
+
+  // Load artwork from server
+  useEffect(() => {
+    fetch('/api/artwork')
+      .then(res => res.json())
+      .then(setArtworkData)
+      .catch(() => setArtworkData(initialArtworkData));
+  }, []);
 
   // Always show vertical scrollbar to prevent layout shift
   useEffect(() => {
@@ -193,6 +287,9 @@ export default function Home() {
     });
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
   const openImage = (src: string, alt: string) => setModal({ src, alt });
+  const handleAddArtwork = (art: Artwork) => {
+    setArtworkData((prev) => [...prev, art]);
+  };
 
   return (
     <div className="min-h-screen flex flex-col bg-black text-white">
@@ -206,7 +303,10 @@ export default function Home() {
           {hoverEmoji ? "(づ￣ 3￣)づ" : "(/≧▽≦)/"}
         </span>
       </div>
-      <DiscordPresence userId="1002839537644482611" />
+      <DiscordPresence
+        userId="1002839537644482611"
+        onAdminUpload={() => setShowUploadForm(true)}
+      />
 
       {/* Main content */}
       <main className="flex-1 px-6 py-8">
@@ -259,10 +359,10 @@ export default function Home() {
                   className="masonry-item border border-gray-800 p-4 hover:border-green-500 transition-colors rounded bg-black"
                 >
                   <img
-                    src={`/${a.filename}`}
+                    src={a.url ?? `/${a.filename}`}
                     alt={a.title}
                     className="w-full h-auto object-cover rounded shadow-lg mb-2 cursor-zoom-in"
-                    onClick={() => openImage(`/${a.filename}`, a.title)}
+                    onClick={() => openImage(a.url ?? `/${a.filename}`, a.title)}
                   />
                   <h3 className="terminal-white font-bold">{a.title}</h3>
                   <p className="terminal-white text-sm opacity-80">
@@ -300,6 +400,13 @@ export default function Home() {
           src={modal.src}
           alt={modal.alt}
           onClose={() => setModal(null)}
+        />
+      )}
+
+      {showUploadForm && (
+        <UploadArtworkModal
+          onSubmit={handleAddArtwork}
+          onClose={() => setShowUploadForm(false)}
         />
       )}
     </div>

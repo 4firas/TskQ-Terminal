@@ -44,12 +44,17 @@ interface DiscordPresence {
 
 interface DiscordPresenceProps {
   userId: string
+  onAdminUpload?: () => void
 }
 
-export function DiscordPresence({ userId }: DiscordPresenceProps) {
+export function DiscordPresence({ userId, onAdminUpload }: DiscordPresenceProps) {
   const [presenceData, setPresenceData] = useState<DiscordPresence | null>(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
+  const [showLogin, setShowLogin] = useState(false)
+  const [username, setUsername] = useState("")
+  const [password, setPassword] = useState("")
+  const [isAdmin, setIsAdmin] = useState(false)
 
   useEffect(() => {
     const fetchPresenceData = async () => {
@@ -73,6 +78,28 @@ export function DiscordPresence({ userId }: DiscordPresenceProps) {
     const iv = setInterval(fetchPresenceData, 30_000)
     return () => clearInterval(iv)
   }, [userId])
+
+  const handleStatusClick = (e: React.MouseEvent) => {
+    if (e.detail === 3) {
+      if (isAdmin) {
+        onAdminUpload?.()
+      } else {
+        setShowLogin(true)
+      }
+    }
+  }
+
+  const submitLogin = (e: React.FormEvent) => {
+    e.preventDefault()
+    if (username === "tskq" && password === "1234") {
+      setIsAdmin(true)
+      setShowLogin(false)
+      setUsername("")
+      setPassword("")
+    } else {
+      alert("Invalid credentials")
+    }
+  }
 
   // helper for “Listening since”
   const formatElapsed = (start: number) => {
@@ -118,7 +145,12 @@ export function DiscordPresence({ userId }: DiscordPresenceProps) {
 
   return (
     <div className="text-right">
-      <div className="terminal-green">$ discord_status</div>
+      <div
+        className="terminal-green cursor-pointer select-none"
+        onClick={handleStatusClick}
+      >
+        $ discord_status
+      </div>
 
       <div className="flex items-center justify-end gap-2">
         {discord_user.avatar && (
@@ -171,6 +203,35 @@ export function DiscordPresence({ userId }: DiscordPresenceProps) {
         <div className="mt-1">
           <div className="terminal-orange">spotify: {spotify.song}</div>
           <div className="terminal-white text-xs">by {spotify.artist}</div>
+        </div>
+      )}
+
+      {showLogin && (
+        <div className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50">
+          <form
+            onSubmit={submitLogin}
+            className="bg-gray-900 p-4 rounded shadow-md flex flex-col gap-2"
+          >
+            <input
+              className="px-2 py-1 bg-black border border-gray-700 text-white"
+              placeholder="Username"
+              value={username}
+              onChange={e => setUsername(e.target.value)}
+            />
+            <input
+              type="password"
+              className="px-2 py-1 bg-black border border-gray-700 text-white"
+              placeholder="Password"
+              value={password}
+              onChange={e => setPassword(e.target.value)}
+            />
+            <button
+              type="submit"
+              className="bg-green-500 text-black px-3 py-1 rounded hover:bg-green-400"
+            >
+              Login
+            </button>
+          </form>
         </div>
       )}
     </div>
