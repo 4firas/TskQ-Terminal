@@ -248,7 +248,7 @@ export function Terminal({ showArtwork, setShowArtwork }: TerminalProps) {
               <p className="pl-4 mb-1">
                 <span className="terminal-green">Instagram:</span>{" "}
                 <a
-                  href="https://www.instagram.com/tskilca"
+                  href="https://www.instagram.com/firas.log"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-blue-400 hover:underline"
