@@ -17,7 +17,7 @@ export function SocialLinks() {
     },
     {
       name: "Instagram",
-      url: "https://instagram.com/tskilca",
+      url: "https://instagram.com/firas.log",
       icon: <Instagram size={20} />,
     },
     {
