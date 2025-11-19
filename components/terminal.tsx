@@ -257,14 +257,14 @@ export function Terminal({ showArtwork, setShowArtwork }: TerminalProps) {
                 </a>
               </p>
               <p className="pl-4 mb-1">
-                <span className="terminal-green">X/Twitter:</span>{" "}
+                <span className="terminal-green">Guns.lol:</span>{" "}
                 <a
-                  href="https://x.com/TskDied"
+                  href="https://guns.lol/tskq"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-blue-400 hover:underline"
                 >
-                  soundcloud.com/TskDied
+                  https://guns.lol/tskq
                 </a>
               </p>
               <p className="pl-4 mb-1">
