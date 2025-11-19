@@ -5,7 +5,9 @@ import {
   Youtube,
   Music2,
   Twitter,
-  Camera
+  Camera,
+  createIcons,
+  icons
 } from "lucide-react"
 
 export function SocialLinks() {
@@ -21,9 +23,9 @@ export function SocialLinks() {
       icon: <Instagram size={20} />,
     },
     {
-      name: "TikTok",
-      url: "https://www.tiktok.com/@tskilca",
-      icon: <Music2 size={20} />,
+      name: "Guns.lol",
+      url: "https://guns.lol/tskq",
+      icon: <square-square size={20} />,
     },
     {
       name: "YouTube",
