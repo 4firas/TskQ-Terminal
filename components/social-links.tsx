@@ -5,10 +5,12 @@ import {
   Youtube,
   Music2,
   Twitter,
-  Camera,
+  Camera
+} from "lucide-react"
+import {
   createIcons,
   icons
-} from "lucide-react"
+} from "lucide"
 
 export function SocialLinks() {
   const socialLinks = [
