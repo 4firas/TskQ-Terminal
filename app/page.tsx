@@ -17,60 +17,29 @@ interface Artwork {
 
 const initialArtworkData: Artwork[] = [
   {
-    id: 2,
-    title: "Kiyosumi Fan-Art",
-    filename: "kiynale.png",
-    description: "An attempt to recreate 'The kiyosumi effect'",
-  },
-  {
-    id: 4,
-    title: "Practice Hand",
-    filename: "hand.png",
-    description: "Referenced from Pinterest",
-  },
-  {
-    id: 3,
-    title: "Jacket Practice",
-    filename: "jacket.png",
-    description: "Leather jacket folds/textures",
-  },
-  {
     id: 1,
     title: "Yuuri",
     filename: "Yuuri.jpeg",
     description: "From 'Girls last tour' my fav character, yuuri. :)",
   },
   {
-    id: 5,
+    id: 2,
     title: "Eve shopping O-o",
     filename: "offscript.jpg",
     description: "Submission for off-script (F.A)",
   },
   {
-    id: 6,
-    title: "Frieren",
-    filename: "Frieren.jpg",
-    description: "M backkkk! Haven't drawn in a while:p",
-  },
-  {
-    id: 7,
+    id: 3,
     title: "Ryo",
     filename: "sip.png",
     description: "ryo yamada sips the coffee ☕",
   },
   {
-    id: 8,
+    id: 4,
     title: "More Kiyosumi",
     filename: "just-as-you-are.jpg",
     description:
       "only because kiyo herself said that there might be a reward :>",
-  },
-  {
-    id: 9,
-    title: "Colors... !",
-    filename: "nande.png",
-    description:
-      "First drawing after finals, yes I used colors. You're not hallucinating.",
   },
 ];
 
