@@ -6,8 +6,8 @@ import { Terminal } from "@/components/terminal";
 import { SocialLinks } from "@/components/social-links";
 import { cn } from "@/lib/utils";
 
-// Artwork metadata
-interface Artwork {
+// Photo metadata
+interface Photo {
   id: number
   title: string
   filename?: string
@@ -15,31 +15,66 @@ interface Artwork {
   description: string
 }
 
-const initialArtworkData: Artwork[] = [
+const initialPhotoData: Photo[] = [
   {
     id: 1,
-    title: "Yuuri",
-    filename: "Yuuri.jpeg",
-    description: "From 'Girls last tour' my fav character, yuuri. :)",
+    title: "Urban Colors",
+    url: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/tskq.bsky.social%20%5B2025-11-14T10%CB%9036%CB%9041.058Z%5D%203m5licgdmls2s%2001-k0YlTbnbKGVEUpevZlbGX71glZSp7a.jpg",
+    description: "Colorful apartment building against a clear blue sky",
   },
   {
     id: 2,
-    title: "Eve shopping O-o",
-    filename: "offscript.jpg",
-    description: "Submission for off-script (F.A)",
+    title: "Yellow & Teal",
+    url: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/tskq.bsky.social%20%5B2025-11-14T10%CB%9036%CB%9041.058Z%5D%203m5licgdmls2s%2002-IKzJ6vLHR1GbcXaNPRTTzX1yVoIbyA.jpg",
+    description: "Building facade with contrasting yellow and teal panels",
   },
   {
     id: 3,
-    title: "Ryo",
-    filename: "sip.png",
-    description: "ryo yamada sips the coffee ☕",
+    title: "Modernist Architecture",
+    url: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/tskq.bsky.social%20%5B2025-11-14T10%CB%9036%CB%9041.058Z%5D%203m5licgdmls2s%2003-bc5x6yrs67LNMilcCLo1D9hEW5tCnh.jpg",
+    description: "Yellow and white buildings with weathered blue fence",
   },
   {
     id: 4,
-    title: "More Kiyosumi",
-    filename: "just-as-you-are.jpg",
-    description:
-      "only because kiyo herself said that there might be a reward :>",
+    title: "Mirror in the Garden",
+    url: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/tskq.bsky.social%20%5B2025-11-14T10%CB%9039%CB%9005.355Z%5D%203m5ligrgo6s2c%2001-88QNFfhUGgGxDIyu1C3szdwN3EFFIo.jpg",
+    description: "Convex mirror reflection among lush green vegetation",
+  },
+  {
+    id: 5,
+    title: "Palm Trees",
+    url: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/tskq.bsky.social%20%5B2025-11-14T10%CB%9039%CB%9005.355Z%5D%203m5ligrgo6s2c%2002-m68tVCwlHQ3vcFaoTX0Mjrci0eMFdT.jpg",
+    description: "Palm trees swaying against a clear blue sky",
+  },
+  {
+    id: 6,
+    title: "Parking Lot Exit",
+    url: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/tskq.bsky.social%20%5B2025-11-14T10%CB%9039%CB%9005.355Z%5D%203m5ligrgo6s2c%2003-sLZ2564WL4SQls45f389TegUqvMKmq.jpg",
+    description: "Covered parking area with sunlight at the exit",
+  },
+  {
+    id: 7,
+    title: "Walrus Board",
+    url: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/tskq.bsky.social%20%5B2025-08-17T10%CB%9057%CB%9009.607Z%5D%203lwlpxgnxas2d%2002-mx4te9CQt4Lu25NKbz0RVpzaCJAibN.jpg",
+    description: "Corkboard with walrus photos and handwritten notes",
+  },
+  {
+    id: 8,
+    title: "Palm Pathway",
+    url: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/tskq.bsky.social%20%5B2025-11-29T19%CB%9011%CB%9050.232Z%5D%203m6s43s6ozk2b%2002-JqjWer4frRidrwQoDKVQTrkNNYmznF.jpg",
+    description: "Traditional pathway lined with palm trees and festive flags",
+  },
+  {
+    id: 9,
+    title: "Mountain Vista",
+    url: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/tskq.bsky.social%20%5B2025-11-29T19%CB%9011%CB%9050.232Z%5D%203m6s43s6ozk2b%2003-6ol5nJM0p0fMsSjmFOm1M6trwdWEtd.jpg",
+    description: "Mountains rising above palm tree canopy at golden hour",
+  },
+  {
+    id: 10,
+    title: "Traditional Crafts",
+    url: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/tskq.bsky.social%20%5B2025-11-29T19%CB%9011%CB%9050.232Z%5D%203m6s43s6ozk2b%2001-OEgh3jYNcOTVm02wv0lVbXXZhr9KGI.jpg",
+    description: "Woven baskets and pottery hanging on a tree with flags",
   },
 ];
 
@@ -130,11 +165,11 @@ function ZoomableModal({
   );
 }
 
-function UploadArtworkModal({
+function UploadPhotoModal({
   onSubmit,
   onClose,
 }: {
-  onSubmit: (data: Artwork) => void;
+  onSubmit: (data: Photo) => void;
   onClose: () => void;
 }) {
   const [title, setTitle] = useState("");
@@ -195,12 +230,12 @@ function UploadArtworkModal({
 
 // Main page
 export default function Home() {
-  const [showArtwork, setShowArtwork] = useState(true);
+  const [showPhotos, setShowPhotos] = useState(true);
   const [currentTime, setCurrentTime] = useState("");
   const [hoverEmoji, setHoverEmoji] = useState(false);
   const [scrollArrows, setScrollArrows] = useState({ down: true, up: false });
   const [modal, setModal] = useState<{ src: string; alt: string } | null>(null);
-  const [artworkData, setArtworkData] = useState<Artwork[]>(initialArtworkData);
+  const [photoData, setPhotoData] = useState<Photo[]>(initialPhotoData);
   const [showUploadForm, setShowUploadForm] = useState(false);
 
   // Always show vertical scrollbar to prevent layout shift
@@ -223,27 +258,27 @@ export default function Home() {
   useEffect(() => {
     const onScroll = () => {
       const y = window.scrollY;
-      const artSection = document.getElementById("artwork-section");
-      const artTop = artSection?.offsetTop || Infinity;
+      const photoSection = document.getElementById("photos-section");
+      const photoTop = photoSection?.offsetTop || Infinity;
       setScrollArrows({
-        down: y < 100 && showArtwork,
-        up: y > artTop - 100 && showArtwork,
+        down: y < 100 && showPhotos,
+        up: y > photoTop - 100 && showPhotos,
       });
     };
     onScroll();
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
-  }, [showArtwork]);
+  }, [showPhotos]);
 
-  const scrollToArtwork = () =>
+  const scrollToPhotos = () =>
     window.scrollTo({
-      top: document.getElementById("artwork-section")?.offsetTop || 0,
+      top: document.getElementById("photos-section")?.offsetTop || 0,
       behavior: "smooth",
     });
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
   const openImage = (src: string, alt: string) => setModal({ src, alt });
-  const handleAddArtwork = (art: Artwork) => {
-    setArtworkData((prev) => [...prev, art]);
+  const handleAddPhoto = (photo: Photo) => {
+    setPhotoData((prev) => [...prev, photo]);
   };
 
   return (
@@ -269,7 +304,7 @@ export default function Home() {
           <p className="font-mono text-green-300 mb-2">
             &gt; Interactive Terminal Interface
           </p>
-          <Terminal showArtwork={showArtwork} setShowArtwork={setShowArtwork} />
+          <Terminal showPhotos={showPhotos} setShowPhotos={setShowPhotos} />
         </section>
 
         <section className="mb-12">
@@ -281,10 +316,10 @@ export default function Home() {
 
         <section className="flex flex-col items-center mb-12 space-y-4">
           <button
-            onClick={() => setShowArtwork((v) => !v)}
+            onClick={() => setShowPhotos((v) => !v)}
             className="px-5 py-2 border border-green-400 text-green-400 hover:bg-green-400 hover:text-black rounded transition"
           >
-            {showArtwork ? "Hide Artwork" : "Show Artwork"}
+            {showPhotos ? "Hide Photos" : "Show Photos"}
           </button>
           {/* Scroll down arrow */}
           <div
@@ -294,34 +329,32 @@ export default function Home() {
                 ? "opacity-100 pointer-events-auto"
                 : "opacity-0 pointer-events-none",
             )}
-            onClick={scrollToArtwork}
+            onClick={scrollToPhotos}
           >
             ↓
           </div>
         </section>
 
-        {showArtwork && (
-          <section id="artwork-section" className="mb-12">
+        {showPhotos && (
+          <section id="photos-section" className="mb-12">
             <h2 className="font-mono text-green-400 text-lg mb-4">
-              $ ls ~/artwork - Hope you enjoy my art, Dear visitor! - If you
-              have any questions regarding my work, feel free to drop a dm on
-              discord~! ^-^
+              $ ls ~/photos - Shot with Canon EOS M6 - Hope you enjoy my photography, Dear visitor! ^-^
             </h2>
             <div className="masonry">
-              {artworkData.map((a) => (
+              {photoData.map((p) => (
                 <div
-                  key={a.id}
+                  key={p.id}
                   className="masonry-item border border-gray-800 p-4 hover:border-green-500 transition-colors rounded bg-black"
                 >
                   <img
-                    src={a.url ?? `/${a.filename}`}
-                    alt={a.title}
+                    src={p.url ?? `/${p.filename}`}
+                    alt={p.title}
                     className="w-full h-auto object-cover rounded shadow-lg mb-2 cursor-zoom-in"
-                    onClick={() => openImage(a.url ?? `/${a.filename}`, a.title)}
+                    onClick={() => openImage(p.url ?? `/${p.filename}`, p.title)}
                   />
-                  <h3 className="terminal-white font-bold">{a.title}</h3>
+                  <h3 className="terminal-white font-bold">{p.title}</h3>
                   <p className="terminal-white text-sm opacity-80">
-                    {a.description}
+                    {p.description}
                   </p>
                 </div>
               ))}
@@ -359,8 +392,8 @@ export default function Home() {
       )}
 
       {showUploadForm && (
-        <UploadArtworkModal
-          onSubmit={handleAddArtwork}
+        <UploadPhotoModal
+          onSubmit={handleAddPhoto}
           onClose={() => setShowUploadForm(false)}
         />
       )}
