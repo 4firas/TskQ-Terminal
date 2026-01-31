@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
+  <circle cx="24" cy="24" r="20" fill="#4a90d9"/>
+  <path d="M24 8c-8.8 0-16 7.2-16 16s7.2 16 16 16c3 0 5.8-.8 8.2-2.2L35 44l7-7-6.2-2.8c1.4-2.4 2.2-5.2 2.2-8.2 0-8.8-7.2-16-16-16z" fill="#5ba0e9"/>
+  <circle cx="24" cy="24" r="10" fill="#fff"/>
+  <text x="24" y="28" text-anchor="middle" fill="#4a90d9" font-size="10" font-weight="bold">e</text>
+</svg>

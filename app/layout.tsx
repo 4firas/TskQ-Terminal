@@ -1,18 +1,11 @@
 import type React from "react"
 import "./globals.css"
 import type { Metadata } from "next"
-import { JetBrains_Mono } from "next/font/google"
-
-const jetbrainsMono = JetBrains_Mono({
-  subsets: ["latin"],
-  weight: ["400", "700"],
-  variable: "--font-jetbrains-mono",
-})
 
 export const metadata: Metadata = {
   title: "(¬‿¬)",
-  description: "Tskq's terminal based thing!",
-    generator: 'TskQ'
+  description: "Windows XP themed personal website by tskq",
+  generator: "TskQ",
 }
 
 export default function RootLayout({
@@ -22,7 +15,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={jetbrainsMono.className}>{children}</body>
+      <head>
+        <link
+          href="https://fonts.googleapis.com/css2?family=Tahoma:wght@400;700&display=swap"
+          rel="stylesheet"
+        />
+      </head>
+      <body>{children}</body>
     </html>
   )
 }
