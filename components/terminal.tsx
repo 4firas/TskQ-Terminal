@@ -5,8 +5,8 @@ import { useRouter } from "next/navigation"
 import type React from "react"
 
 interface TerminalProps {
-  showArtwork: boolean
-  setShowArtwork: (show: boolean) => void
+  showPhotos: boolean
+  setShowPhotos: (show: boolean) => void
 }
 
 interface CommandOutput {
@@ -15,7 +15,7 @@ interface CommandOutput {
   content: string | JSX.Element
 }
 
-export function Terminal({ showArtwork, setShowArtwork }: TerminalProps) {
+export function Terminal({ showPhotos, setShowPhotos }: TerminalProps) {
   const [input, setInput] = useState("")
   const [commandHistory, setCommandHistory] = useState<string[]>([])
   const [historyIndex, setHistoryIndex] = useState(-1)
@@ -156,10 +156,10 @@ export function Terminal({ showArtwork, setShowArtwork }: TerminalProps) {
                 <span className="terminal-green">clear</span> - Clear the terminal
               </p>
               <p className="pl-4 mb-1">
-                <span className="terminal-green">show_artwork</span> - Display artwork gallery
+                <span className="terminal-green">show_photos</span> - Display photography gallery
               </p>
               <p className="pl-4 mb-1">
-                <span className="terminal-green">hide_artwork</span> - Hide artwork gallery
+                <span className="terminal-green">hide_photos</span> - Hide photography gallery
               </p>
               <p className="pl-4 mb-1">
                 <span className="terminal-green">about</span> - Display information about me
@@ -178,27 +178,27 @@ export function Terminal({ showArtwork, setShowArtwork }: TerminalProps) {
     } else if (cmd === "clear") {
       playEnterSound()
       setCommandOutputs([])
-    } else if (cmd === "show_artwork") {
+    } else if (cmd === "show_photos") {
       playEnterSound()
-      setShowArtwork(true)
+      setShowPhotos(true)
       setCommandOutputs((prev) => [
         ...prev,
         {
           id: terminalId + 1,
           type: "response",
-          content: "Displaying artwork gallery...",
+          content: "Displaying photography gallery...",
         },
       ])
       setTerminalId((prev) => prev + 2)
-    } else if (cmd === "hide_artwork") {
+    } else if (cmd === "hide_photos") {
       playEnterSound()
-      setShowArtwork(false)
+      setShowPhotos(false)
       setCommandOutputs((prev) => [
         ...prev,
         {
           id: terminalId + 1,
           type: "response",
-          content: "Hiding artwork gallery...",
+          content: "Hiding photography gallery...",
         },
       ])
       setTerminalId((prev) => prev + 2)
@@ -213,11 +213,10 @@ export function Terminal({ showArtwork, setShowArtwork }: TerminalProps) {
             <div className="py-2">
               <p className="mb-1">About Me:</p>
               <p className="pl-4 mb-1">
-                I'm a digital artist and developer passionate about creating immersive experiences.
+                I'm a photographer and developer passionate about capturing moments and creating experiences.
               </p>
               <p className="pl-4 mb-1">
-                My work spans across various mediums including digital art, web development, and interactive
-                installations.
+                I shoot with my Canon EOS M6. My work spans urban architecture, nature, and cultural scenes.
               </p>
             </div>
           ),
@@ -389,7 +388,7 @@ export function Terminal({ showArtwork, setShowArtwork }: TerminalProps) {
     } else if (e.key === "Tab") {
       e.preventDefault()
       // Simple tab completion
-      const commands = ["help", "clear", "show_artwork", "hide_artwork", "about", "social", "terminate"]
+      const commands = ["help", "clear", "show_photos", "hide_photos", "about", "social", "terminate"]
       const matchingCommands = commands.filter((cmd) => cmd.startsWith(input.toLowerCase()))
 
       if (matchingCommands.length === 1) {
