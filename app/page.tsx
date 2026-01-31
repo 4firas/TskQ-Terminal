@@ -76,6 +76,24 @@ const initialPhotoData: Photo[] = [
     url: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/tskq.bsky.social%20%5B2025-11-29T19%CB%9011%CB%9050.232Z%5D%203m6s43s6ozk2b%2001-OEgh3jYNcOTVm02wv0lVbXXZhr9KGI.jpg",
     description: "Woven baskets and pottery hanging on a tree with flags",
   },
+  {
+    id: 11,
+    title: "Red Room",
+    url: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/tskq.bsky.social%20%5B2025-08-17T10%CB%9055%CB%9055.808Z%5D%203lwlpvr3d3k2d%2001-QoGTClRCRkdallxDMVebeZCFVeV4q8.jpg",
+    description: "Abstract installation with red light and black shapes",
+  },
+  {
+    id: 12,
+    title: "Striped Poles",
+    url: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/tskq.bsky.social%20%5B2025-06-13T19%CB%9004%CB%9046.947Z%5D%203lrj4vugxos2a%2001-lJjgHPaalZ4OA5dkPcHwvXUWdAdgGc.jpg",
+    description: "Red and white barrier poles at night",
+  },
+  {
+    id: 13,
+    title: "Aquarium",
+    url: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/tskq.bsky.social%20%5B2025-08-17T10%CB%9055%CB%9040.804Z%5D%203lwlpva6ndc2d%2001-7orp9E8qHEG0oYf7T9XmLKO516nQkD.jpg",
+    description: "Silhouette watching through a window",
+  },
 ];
 
 // Modal component for zoom + pan
