@@ -4,7 +4,7 @@ import type { Metadata } from "next"
 
 export const metadata: Metadata = {
   title: "(¬‿¬)",
-  description: "Windows XP themed personal website by tskq",
+  description: "My one and only website~",
   generator: "TskQ",
 }
 
