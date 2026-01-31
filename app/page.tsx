@@ -76,6 +76,24 @@ const initialPhotoData: Photo[] = [
     url: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/tskq.bsky.social%20%5B2025-11-29T19%CB%9011%CB%9050.232Z%5D%203m6s43s6ozk2b%2001-OEgh3jYNcOTVm02wv0lVbXXZhr9KGI.jpg",
     description: "Woven baskets and pottery hanging on a tree with flags",
   },
+  {
+    id: 11,
+    title: "Buoys in Darkness",
+    url: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/tskq.bsky.social%20%5B2025-06-13T19%CB%9004%CB%9046.947Z%5D%203lrj4vugxos2a%2001-9Jb6v6aeeB0d93AwoBDMGoolv1bAro.jpg",
+    description: "Red and white striped buoys receding into dark water",
+  },
+  {
+    id: 12,
+    title: "Geometric Solitude",
+    url: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/tskq.bsky.social%20%5B2025-08-17T10%CB%9055%CB%9055.808Z%5D%203lwlpvr3d3k2d%2001-BWzfrcq3eOiRpsclH0V01oRocC3dMU.jpg",
+    description: "Lone figure standing on flowing red and black landscape",
+  },
+  {
+    id: 13,
+    title: "Interiors & Light",
+    url: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/tskq.bsky.social%20%5B2025-08-17T10%CB%9055%CB%9040.804Z%5D%203lwlpva6ndc2d%2001-iXd8aNXlI2h5XIA9MfmfzMaV6cPLxa.jpg",
+    description: "Doorway with light and illuminated circular window with Arabic text",
+  },
 ];
 
 // Modal component for zoom + pan
