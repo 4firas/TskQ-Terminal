@@ -30,25 +30,26 @@ export function AboutMeWindow() {
 
 Hey! I'm tskq (also known as tsk or tskku).
 
-I'm a 16-year-old ILCA 4 sailor with a passion 
-for photography, videography, and cinematography.
+I'm a 17-year-old ILCA 4 sailor and I also like
+photography and cinematography. ^-^
 
 ───────────────────────────────────────────
                  MY GEAR
 ───────────────────────────────────────────
 
 📷 Camera: Canon EOS M6
-🎬 I love capturing moments and creating 
-   visual experiences.
+🎬 I love making my videos look like
+"memories".
 
 ───────────────────────────────────────────
                WHAT I DO
 ───────────────────────────────────────────
 
-• Photography - Urban architecture, nature, 
-  and cultural scenes
-• Videography & Editing
-• Web Development
+• Photography - Urban architecture,
+street photography, nature, and
+cultural scenes
+• Videography & Editing (mainly coloring and VFX)
+• Web Development (with the help of AI -.-)
 • Sailing (ILCA 4 class)
 
 ───────────────────────────────────────────
