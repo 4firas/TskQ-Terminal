@@ -94,6 +94,7 @@ const artworkFiles = [
     { title: "sip", file: "sip.png" },
     { title: "Yuuri", file: "Yuuri.jpeg" },
     { title: "kiyo-fanart", file: "just-as-you-are.jpg" },
+    { title: "Fern", file: "fern.png" },
 ]
 
 export function ArtworkWindow({ mode = "pictures" }: { mode?: "pictures" | "artwork" }) {
