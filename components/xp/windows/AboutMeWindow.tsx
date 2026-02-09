@@ -28,7 +28,7 @@ export function AboutMeWindow() {
                   ABOUT ME
 ═══════════════════════════════════════════
 
-Hey! I'm tskq (also known as tsk or tskku).
+Hey! I'm fir4s (also known as tsk).
 
 I'm a 17-year-old ILCA 4 sailor and I also like
 photography and cinematography. ^-^
