@@ -92,7 +92,6 @@ const photoData = [
 const artworkFiles = [
     { title: "Fern", file: "fern.png" },
     { title: "sip", file: "sip.png" },
-    { title: "Yuuri", file: "Yuuri.jpeg" },
     { title: "kiyo-fanart", file: "just-as-you-are.jpg" },
 
 ]
