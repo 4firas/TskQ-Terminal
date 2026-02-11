@@ -90,6 +90,7 @@ const photoData = [
 ]
 
 const artworkFiles = [
+    { title: "Firael (oc)", file: "firael.png" },
     { title: "Fern", file: "fern.png" },
     { title: "kiyo-fanart", file: "just-as-you-are.jpg" },
 
