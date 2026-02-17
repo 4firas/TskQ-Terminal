@@ -28,10 +28,14 @@ export function AboutMeWindow() {
                   ABOUT ME
 ═══════════════════════════════════════════
 
-Hey! I'm fir4s (also known as tsk).
+Hey! I'm Fir4s (also known as Tsk).
 
 I'm a 17-year-old ILCA 4 sailor and I also like
 photography and cinematography. ^-^
+
+The reason why I choose Fir4s comes down to 4 things I do and love:
+
+Stills. Motion. Design. Sound.
 
 ───────────────────────────────────────────
                  MY GEAR
@@ -57,7 +61,7 @@ cultural scenes
 Thanks for visiting my little corner of 
 the internet! Feel free to explore around.
 
-                               - tskq ♡
+                               - Fir4s ♡
 
 ═══════════════════════════════════════════`}
                 </div>
