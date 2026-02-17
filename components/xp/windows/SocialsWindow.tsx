@@ -7,7 +7,7 @@ const socialLinks = [
     {
         id: "bsky",
         name: "Bluesky",
-        url: "https://bsky.app/profile/tskq.bsky.social",
+        url: "https://bsky.app/profile/4firas.bsky.social",
         icon: "/icons/bluesky.svg"
     },
     {
@@ -31,7 +31,7 @@ const socialLinks = [
     {
         id: "github",
         name: "GitHub",
-        url: "https://github.com/tskq",
+        url: "https://github.com/4firas",
         icon: "/icons/github.png"
     }
 ]
